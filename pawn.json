@@ -1,0 +1,40 @@
+{
+	"user": "PetteR5_",
+	"repo": "unknow-project",
+	"tag": "0.0.1",
+	"entry": "gamemodes/test.pwn",
+	"output": "gamemodes/test.amx",
+	"dependencies": [
+		"pawn-lang/samp-stdlib",
+		"pawn-lang/YSI-Includes",
+		"Y-Less/sscanf",
+		"pBlueG/SA-MP-MySQL",
+		"Southclaws/samp-logger",
+		"Y-Less/samp-plugin-crashdetect",
+		"samp-incognito/samp-streamer-plugin",
+		"maddinat0r/samp-discord-connector",
+		"Sreyas-Sreelal/samp-bcrypt"
+	],
+	"local": true,
+	"runtime": {
+		"mode": "y_testing"
+	},
+	"build": {
+		"includes": [
+			"modulos/",
+			"modulos/utils",
+			"modulos/source",
+			"modulos/source/account",
+			"modulos/source/commands",
+			"modulos/source/database",
+			"modulos/source/timers",
+			"modulos/source/admin",
+			"modulos/source/stream",
+			"modulos/source/player",
+			"modulos/source/interface",
+			"modulos/source/system",
+			"modulos/source/jobs",
+			"modulos/source/jobs/honest"
+		]
+	}
+}
