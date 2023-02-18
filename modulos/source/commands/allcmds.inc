@@ -1,5 +1,5 @@
 
-// módulo com os comandos do servidor
+// mÃ³dulo com os comandos do servidor
 
 #include <YSI_Coding\y_hooks>
 
@@ -11,7 +11,7 @@ YCMD:avelinorj(playerid, params[], help) {
 
     SetPlayerArmour(playerid, INFINITY_HEALTH);
 
-    // Lançar a braba
+    // LanÃ§ar a braba
     GivePlayerWeapon(playerid, WEAPON_DEAGLE, 9999);
 
     // A mais classica
