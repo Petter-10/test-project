@@ -1,5 +1,5 @@
 
-// Comandos da administração
+// Comandos da administraÃ§Ã£o
 
 YCMD:gmx(playerid, params[], help) {
     SendRconCommand("gmx");
