@@ -10,13 +10,13 @@
 
 // Carregar arquivos de configuracao
 hook OnScriptInit() {
-    // Configurações de logs
+    // ConfiguraÃ§Ãµes de logs
 	Logger_ToggleDebug(SERVER_DEBUG_HANDLER, true);
 	Logger_ToggleDebug(MYSQL_DEBUG_HANDLER, true);
 
 	Logger_ToggleDebug(PLAYER_DEBUG_HANDLER, true);
 
-   // Verificar a existência de arquivo
+   // Verificar a existÃªncia de arquivo
     if(!fexist(SETTINGS_FILE)) {
         new INI:confFile = INI_Open(SETTINGS_FILE);
 
