@@ -1,8 +1,8 @@
 
-// Profiss„o de caminhoneiro
+// Profiss√£o de caminhoneiro
 #include <YSI_Coding\y_hooks>
 
-// DefiniÁıes
+// Defini√ß√µes
 static gTruckerCP[MAX_PLAYERS] = {INVALID_STREAMER_ID, ...};
 static gTruckerObject[MAX_VEHICLES] = {INVALID_STREAMER_ID, ...};
 
@@ -36,13 +36,13 @@ YCMD:carregar(playerid, params[], help) {
     new vehicleid = GetPlayerVehicleID(playerid);
 
     if (IsPlayerWorking(playerid))
-        return SendErrorMsg(playerid, "VocÍ j· est· trabalhando.");
+        return SendErrorMsg(playerid, "Voc√™ j√° est√° trabalhando.");
 
     if (vehicleid == INVALID_VEHICLE_ID)
-        return SendErrorMsg(playerid, "VocÍ n„o est· em um veÌculo.");
+        return SendErrorMsg(playerid, "Voc√™ n√£o est√° em um ve√≠culo.");
 
     if (GetVehicleModel(vehicleid) != 578)
-        return SendErrorMsg(playerid, "VocÍ n„o est· em um DFT-30 para iniciar o trabalho");
+        return SendErrorMsg(playerid, "Voc√™ n√£o est√° em um DFT-30 para iniciar o trabalho");
 
     Trucker_Init(playerid);
     return 1;
@@ -99,7 +99,7 @@ static timer LoadUnload_Truck[5000](playerid) {
 
             gTruckerCP[playerid] = INVALID_STREAMER_ID;
             
-            // Anexar o objeto ao veÌculo
+            // Anexar o objeto ao ve√≠culo
             new vehicleid = GetPlayerVehicleID(playerid);
             
             gTruckerObject[vehicleid] = CreateDynamicObject(2935, 0, 0, -1000, 0, 0, 0, 100);
@@ -112,23 +112,23 @@ static timer LoadUnload_Truck[5000](playerid) {
             nfeNumber = random(10000);
 
             // Formatar o dialog
-            format(string, sizeof(string), "O veÌculo foi carregado com mercadorias, pesando o total de %i ton.\n", weightCargo);
-            format(string, sizeof(string), "%sLeve a mercadoria atÈ o depÛsito de Los Santos.\n\n", string);
-            format(string, sizeof(string), "%sSeu veÌculo %s sobrecarregado.", string, (weightCargo > 40 ? "est·" : "n„o est·"));
+            format(string, sizeof(string), "O ve√≠culo foi carregado com mercadorias, pesando o total de %i ton.\n", weightCargo);
+            format(string, sizeof(string), "%sLeve a mercadoria at√© o dep√≥sito de Los Santos.\n\n", string);
+            format(string, sizeof(string), "%sSeu ve√≠culo %s sobrecarregado.", string, (weightCargo > 40 ? "est√°" : "n√£o est√°"));
 
-            // Formatar o cabeÁalho
+            // Formatar o cabe√ßalho
             format(string2, sizeof(string2), "Nota Fiscal - #%i", nfeNumber);
 
             Dialog_Show(playerid, DIALOG_STYLE_MSGBOX, string2, string, "Fechar");
 
-            // Setar o prÛximo passo
+            // Setar o pr√≥ximo passo
             gTruckerProcess[playerid] = 2;
 
             // Criar novo checkpoint
             gTruckerCP[playerid] =  CreateDynamicRaceCP(1, 1067.89, -883.89, 43.17, 0.0, 0.0, 0.0, 5, -1, -1, .playerid = playerid, .streamdistance = 5000);
         }
         case 2: {
-            SendMsg(playerid, -1, "VocÍ entregou as mercadorias e ganhou 500");
+            SendMsg(playerid, -1, "Voc√™ entregou as mercadorias e ganhou 500");
 
             Trucker_Finish(playerid);
         }
