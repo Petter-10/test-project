@@ -2,7 +2,7 @@
 #include <YSI_Data\y_iterate>
 #include <YSI_Coding\y_va>
 
-// Funções úteis
+// FunÃ§Ãµes Ãºteis
 
 stock FormatFullTime() {
     new
