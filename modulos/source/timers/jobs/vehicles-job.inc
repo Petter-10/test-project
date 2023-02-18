@@ -41,7 +41,7 @@ stock SpawnVehicleJob(playerid, modelid, Float:x, Float:y, Float:z, Float:a, col
     gVehicleData[id][gPlayerID] = playerid;
     gVehicleData[id][gJobID] = jobid;
 
-    // Criar o veÌculo
+    // Criar o ve√≠culo
     gVehicleData[id][gVehicleID] = CreateVehicle(modelid, x, y, z, a, color1, color2, 600, false); 
 
     ChangeVehicleColor(gVehicleData[id][gVehicleID], color1, color2);
@@ -54,7 +54,7 @@ stock SpawnVehicleJob(playerid, modelid, Float:x, Float:y, Float:z, Float:a, col
 stock DeleteVehicleJob(playerid) {
     foreach(new i : gVehiclesJob) {
         if (gVehicleData[i][gPlayerID] == playerid) {
-            // Excluir veÌculo
+            // Excluir ve√≠culo
             
             // Setar os dados
             gVehicleData[i][gModelID] = 0;
@@ -77,7 +77,7 @@ stock DeleteVehicleJob(playerid) {
                 }
             }
 
-            // Destruir o veÌculo
+            // Destruir o ve√≠culo
             DestroyVehicle(gVehicleData[i][gVehicleID]);
 
             gVehicleData[i][gVehicleID] = INVALID_VEHICLE_ID;
@@ -91,14 +91,14 @@ stock DeleteVehicleJob(playerid) {
 }
 
 hook OnPlayerEnterVehicle(playerid, vehicleid, ispassenger) {
-    // Checar se È passageiro
+    // Checar se √© passageiro
     if (!ispassenger) {
-        // Verificar se È um veiculo de profissao
+        // Verificar se √© um veiculo de profissao
         foreach(new i : gVehiclesJob) {
             if (vehicleid == gVehicleData[i][gVehicleID]) {
-                // Verificar se È do player
+                // Verificar se √© do player
                 if (gVehicleData[vehicleid][gPlayerID] != playerid) {
-                    SendErrorMsg(playerid, "Esse veiculo n„o È seu.");
+                    SendErrorMsg(playerid, "Esse veiculo n√£o √© seu.");
 
                     ClearAnimations(playerid);
                 }
@@ -117,7 +117,7 @@ hook OnVehicleDeath(vehicleid, killerid) {
         if (vehicleid == gVehicleData[i][gVehicleID]) {
             new playerid = gVehicleData[vehicleid][gPlayerID];
 
-            SendErrorMsg(playerid, "Seu veÌculo de trabalho foi destruido");
+            SendErrorMsg(playerid, "Seu ve√≠culo de trabalho foi destruido");
 
             // Excluir o veiculo ao destruir
             DeleteVehicleJob(playerid);  
