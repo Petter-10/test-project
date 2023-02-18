@@ -29,7 +29,7 @@ static Timer:g_LoginTimer[MAX_PLAYERS] = {Timer:0, ...};
 
 // Timer
 timer OnLoginTimeout[60 * 1000](playerid) {
-    Dialog_Show(playerid, DIALOG_STYLE_MSGBOX, ""FIREBRICK1"Servidor", "{FFFFFF}Você foi kickado por demorar para logar/registrar sua conta.", "Fechar");
+    Dialog_Show(playerid, DIALOG_STYLE_MSGBOX, ""FIREBRICK1"Servidor", "{FFFFFF}VocÃª foi kickado por demorar para logar/registrar sua conta.", "Fechar");
     
 	Kick(playerid);
 }
@@ -104,7 +104,7 @@ hook OnPlayerPassedBanCheck(playerid) {
 
 	Timer_CreateCallback(using inline ShowScenes, 500, 1);
     
-    // Música
+    // MÃºsica
     new playMusic = random(sizeof(g_MusicLinks)); 
     PlayAudioStreamForPlayer(playerid, g_MusicLinks[playMusic]);
 
@@ -120,7 +120,7 @@ hook OnPlayerPassedBanCheck(playerid) {
 	return 1;
 }
 
-// Funções dos textdraws
+// FunÃ§Ãµes dos textdraws
 static PasswordLogin(playerid) {
 	inline _response(response, listitem, string:inputtext[]) {
 		#pragma unused listitem
@@ -139,7 +139,7 @@ static PasswordLogin(playerid) {
 			return 0;
 
 		if (!(4 <= strlen(inputtext[playerid]) <= 20))
-			return SendErrorMsg(playerid, "Digite sua senha válida.");
+			return SendErrorMsg(playerid, "Digite sua senha vÃ¡lida.");
 
 		if (p_Register[playerid]) {
 			StopLoginTimer(playerid);
@@ -163,7 +163,7 @@ static PasswordLogin(playerid) {
 					SetPVarInt(playerid, "TentativasLogin", GetPVarInt(playerid, "TentativasLogin") + 1);
 
 					if (GetPVarInt(playerid, "TentativasLogin") == 5) {
-						SendClientMessage(playerid, X11_ORANGERED2, "** Você falhou ao fazer login, por isso foi kickado.");
+						SendClientMessage(playerid, X11_ORANGERED2, "** VocÃª falhou ao fazer login, por isso foi kickado.");
 						
 						Logger_Log("player kickado por tentativas de login", Logger_P(playerid), Logger_I("tentativas", GetPVarInt(playerid, "TentativasLogin")));
 						
@@ -197,7 +197,7 @@ public OnPlayerClickLogTextdraw(playerid, type) {
 		}
 		case 2: {
 			if (p_Register[playerid])
-				return SendErrorMsg(playerid, "Sua conta não existe.");
+				return SendErrorMsg(playerid, "Sua conta nÃ£o existe.");
 			
 			RecoveryPassword(playerid);
 		}
@@ -236,7 +236,7 @@ hook OnPlayerClickRegTextdraw(playerid, type) {
 
 					SendMsg(playerid, X11_DODGER_BLUE, "LSA: {FFFFFF}Seja %s "LIMEGREEN"%p {FFFFFF}fique a vontade para curtir nosso servidor", (g_LoginSex[playerid] == SEX_MAN ? "bem vindo" : "bem vinda"), playerid);
 					SendMsg(playerid, X11_DODGER_BLUE, "LSA: {FFFFFF}Siga o tutorial em sua tela para obter recompensas.");
-					SendMsg(playerid, X11_DODGER_BLUE, "LSA: {FFFFFF}Obrigado por jogar, é um prazer tê-lo conosco.");
+					SendMsg(playerid, X11_DODGER_BLUE, "LSA: {FFFFFF}Obrigado por jogar, Ã© um prazer tÃª-lo conosco.");
 
 					GameTextForPlayerEx(playerid, "~w~%s", 5000, 4, (g_LoginSex[playerid] == SEX_MAN ? "bem vindo" : "bem vinda"));
 
@@ -290,12 +290,12 @@ static RecoveryPassword(playerid) {
 		new inputEmail[50];
 
 		if(sscanf(inputtext, "s[50]", inputEmail)) {
-			SendErrorMsg(playerid, "Digite um email válido.");
+			SendErrorMsg(playerid, "Digite um email vÃ¡lido.");
 			return RecoveryPassword(playerid);
 		}
 
 		if(!IsValidEmail(inputEmail)) {
-			SendErrorMsg(playerid, "Email inválido.");
+			SendErrorMsg(playerid, "Email invÃ¡lido.");
 			return RecoveryPassword(playerid);
 		}
 
@@ -309,7 +309,7 @@ static RecoveryPassword(playerid) {
 
 			new infoEmail[128];
 
-			format(infoEmail, sizeof(infoEmail), "Olá %p você esqueceu a senha de sua conta. Use este código para login: %d", playerid, g_SecurityKey[playerid]);
+			format(infoEmail, sizeof(infoEmail), "OlÃ¡ %p vocÃª esqueceu a senha de sua conta. Use este cÃ³digo para login: %d", playerid, g_SecurityKey[playerid]);
 			SendMail(playerMail, "contato.lsarpg@gmail.com", "Life in San Andreas", "Recuperar Conta", infoEmail);
 		
 			ConfirmSecurityCode(playerid);
@@ -317,12 +317,12 @@ static RecoveryPassword(playerid) {
 			StopLoginTimer(playerid);
 		}
 		else {
-			SendErrorMsg(playerid, "O email inserido não condiz com o de sua conta.");
+			SendErrorMsg(playerid, "O email inserido nÃ£o condiz com o de sua conta.");
 			RecoveryPassword(playerid);
 		}
 	}
 
-	Dialog_ShowCallback(playerid, using inline _response, DIALOG_STYLE_INPUT, ""ORANGERED"Esqueci minha senha", "{FFFFFF}Insira o endereço de e-mail que está registrado em sua conta.", "Continuar", "Sair");
+	Dialog_ShowCallback(playerid, using inline _response, DIALOG_STYLE_INPUT, ""ORANGERED"Esqueci minha senha", "{FFFFFF}Insira o endereÃ§o de e-mail que estÃ¡ registrado em sua conta.", "Continuar", "Sair");
 	return 1;
 }
 
@@ -337,14 +337,14 @@ static ConfirmSecurityCode(playerid) {
 				SetupLogin(playerid);
 			}
 			else {
-				SendErrorMsg(playerid, "Código inválido.");
+				SendErrorMsg(playerid, "CÃ³digo invÃ¡lido.");
 
 				ConfirmSecurityCode(playerid);
 			}
 		}
 	}
 
-	Dialog_ShowCallback(playerid, using inline _response, DIALOG_STYLE_INPUT, ""ORANGERED"Esqueci minha senha", "{FFFFFF}Insira o endereço de e-mail que está registrado em sua conta.", "Continuar", "Sair");
+	Dialog_ShowCallback(playerid, using inline _response, DIALOG_STYLE_INPUT, ""ORANGERED"Esqueci minha senha", "{FFFFFF}Insira o endereÃ§o de e-mail que estÃ¡ registrado em sua conta.", "Continuar", "Sair");
 	return 1;
 }
 
@@ -400,12 +400,12 @@ static InsertDiscordID(playerid) {
 		new inputDiscord[34];
 
 		if(!strlen(inputtext) || strlen(inputtext) > 32) {
-			SendErrorMsg(playerid, "Quantia de carácteres inválidos.");
+			SendErrorMsg(playerid, "Quantia de carÃ¡cteres invÃ¡lidos.");
 			return InsertDiscordID(playerid);
 		}
 
 		if(sscanf(inputtext, "s[34]", inputDiscord)) {
-			SendErrorMsg(playerid, "Digite um email válido.");
+			SendErrorMsg(playerid, "Digite um email vÃ¡lido.");
 			return InsertDiscordID(playerid);
 		}
 
@@ -416,7 +416,7 @@ static InsertDiscordID(playerid) {
 			cache_get_row_count(rows);
 
 			if(rows) {
-				SendErrorMsg(playerid, "O ID já está em uso.");
+				SendErrorMsg(playerid, "O ID jÃ¡ estÃ¡ em uso.");
 
 				InsertDiscordID(playerid);
 			}
@@ -433,7 +433,7 @@ static InsertDiscordID(playerid) {
 		MySQL_TQueryInline(MySQL_Database(), using inline OnPlayerCheckDiscordID, "SELECT * FROM `playerdata` WHERE `discord_id` = '%e'", inputDiscord);
 	}
 
-	Dialog_ShowCallback(playerid, using inline _response, DIALOG_STYLE_INPUT, ""ORANGERED"Discord ID", "{FFFFFF}Digite um ID discord válido:", "Continuar", "Fechar");
+	Dialog_ShowCallback(playerid, using inline _response, DIALOG_STYLE_INPUT, ""ORANGERED"Discord ID", "{FFFFFF}Digite um ID discord vÃ¡lido:", "Continuar", "Fechar");
 	return 1;
 }
 
@@ -477,7 +477,7 @@ SetupLogin(playerid) {
 
 	HideLoginMenu(playerid);
 
-	// Último login
+	// Ãšltimo login
 	SetPlayerLastLogin(playerid);
 
 	// Mensagens
