@@ -15,7 +15,7 @@
 
 #define INFINITY_HEALTH     (Float:0x7F800000)
 
-// Configurações do YSI
+// ConfiguraÃ§Ãµes do YSI
 #define YSI_NO_HEAP_MALLOC
 
 // Logger
