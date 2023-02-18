@@ -14,10 +14,10 @@ hook OnScriptInit() {
 
 public OnQueryError(errorid, const error[], const callback[], const query[], MySQL:handle) {
 	switch(errorid) {
-		case 1136: printf("[MySQL] Erro 1136 | A contagem de colunas não corresponde a contagem de valor => \"%s\"", query);
+		case 1136: printf("[MySQL] Erro 1136 | A contagem de colunas nÃ£o corresponde a contagem de valor => \"%s\"", query);
 		case 1054: printf("[MySQL] Erro 1054 | Campo invalido => \"%s\"", query);
 		case 1065: printf("[MySQL] Erro 1065 | Query vazia (o tamanho da variavel pequeno??) => \"%s\" em \"%s\"", query, callback);
-		case 1058: printf("[MySQL] Erro 1058 | A contagem de colunas não corresponde a contagem de valor => \"%s\" em \"%s\"", query, callback);
+		case 1058: printf("[MySQL] Erro 1058 | A contagem de colunas nÃ£o corresponde a contagem de valor => \"%s\" em \"%s\"", query, callback);
 		case 1203: printf("[MySQL] Erro 1203 | O usuario ja possui o maximo de 'max_user_connections' ativas => \"%s\" em \"%s\"", query, callback);
 		case 1045: printf("[MySQL] Erro 1045 | Acesso negado");
 		case ER_SYNTAX_ERROR: printf("[MySQL] Erro de Sintaxe => \"%s\"",query);
