@@ -1,5 +1,5 @@
 
-// MÛdulo de mensagens
+// M√≥dulo de mensagens
 #include <YSI_Server\y_colours>
 
 // Defines
@@ -8,7 +8,7 @@
 #define SendAdminAction(%0,%1)			SendMsg(%0, X11_ROYALBLUE3, "LSA-ADMIN: {FFFFFF}"%1)
 #define SendFormatMessage(%0,%1,%2,%3)	SendMsg(%0, %1, %2":{FFFFFF} "%3)
 
-#define PLAYER_OFFLINE 					"Jogador ID informado È inv·lido ou est· desconectado."
+#define PLAYER_OFFLINE 					"Jogador ID informado √© inv√°lido ou est√° desconectado."
 #define SPACE_LINE						"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 
 static gs_Buffer[256];
