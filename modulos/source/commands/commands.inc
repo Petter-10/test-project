@@ -1,5 +1,5 @@
 
-// MÛdulo de comandos
+// M√≥dulo de comandos
 
 #include <YSI_Coding\y_hooks>
 #include <YSI_Visual\y_commands>
@@ -22,13 +22,13 @@ hook OnScriptInit() {
 public e_COMMAND_ERRORS:OnPlayerCommandReceived(playerid, cmdtext[], e_COMMAND_ERRORS:success) {
 	switch(success) {
 		case COMMAND_UNDEFINED: {
-			SendMsg(playerid, X11_ORANGERED2, "O comando '%s' n„o existe", cmdtext);
+			SendMsg(playerid, X11_ORANGERED2, "O comando '%s' n√£o existe", cmdtext);
 
 			return COMMAND_DENIED;
 		}
 
 		case COMMAND_DENIED: {
-			SendMsg(playerid, X11_ORANGERED2, "VocÍ n„o tem permiss„o", cmdtext);
+			SendMsg(playerid, X11_ORANGERED2, "Voc√™ n√£o tem permiss√£o", cmdtext);
 
 			// Informar
 			Logger_Dbg(PLAYER_DEBUG_HANDLER, "comando nao permitido digitado", Logger_S("comando", cmdtext), Logger_P(playerid));
