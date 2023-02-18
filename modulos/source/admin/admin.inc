@@ -1,5 +1,5 @@
 
-// módulo da administração
+// mÃ³dulo da administraÃ§Ã£o
 #include <YSI_Coding\y_hooks>
 
 hook OnScriptInit() {
@@ -28,7 +28,7 @@ public OnPlayerClickMap(playerid, Float:fX, Float:fY, Float:fZ) {
 // Nicks banidos
 
 static  g_BannedNickname[][MAX_PLAYER_NAME] = {
-    "Frankie", ".Ic3Man.", "[CSA]Rogério"
+    "Frankie", ".Ic3Man.", "[CSA]RogÃ©rio"
 };
 
 stock CheckBannedNicknames(playerid) {
@@ -41,7 +41,7 @@ stock CheckBannedNicknames(playerid) {
         if(strcmp(g_BannedNickname[i], playerName, true) == 0) {
             Kick(playerid);
             
-            Dialog_Show(playerid, DIALOG_STYLE_MSGBOX, ""RED2"Servidor", "{FFFFFF}Este nickname é proibido no servidor.", "Fechar");
+            Dialog_Show(playerid, DIALOG_STYLE_MSGBOX, ""RED2"Servidor", "{FFFFFF}Este nickname Ã© proibido no servidor.", "Fechar");
 
             // Pegar ip
             new playerIP[16];
