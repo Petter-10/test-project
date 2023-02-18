@@ -20,7 +20,7 @@ stock CheckPlayerBan(playerid) {
                 new hora, minuto, segundo, dia, mes, ano;
                 TimestampToDate(ban, ano, mes, dia, hora, minuto, segundo);
             
-                format(dialogBan, sizeof(dialogBan), "VocÍ est· banido permanentemente do servidor!\n\nRespons·vel pelo ban: %s\nData do banimento: %d/%d/%d - %d:%d:%d\nMotivo: %s", admin, dia, mes, ano, hora, minuto, segundo, motivo);
+                format(dialogBan, sizeof(dialogBan), "Voc√™ est√° banido permanentemente do servidor!\n\nRespons√°vel pelo ban: %s\nData do banimento: %d/%d/%d - %d:%d:%d\nMotivo: %s", admin, dia, mes, ano, hora, minuto, segundo, motivo);
                 Dialog_Show(playerid, DIALOG_STYLE_MSGBOX, "Ban", dialogBan, "Fechar", "");
                 
                 Kick(playerid);
@@ -31,7 +31,7 @@ stock CheckPlayerBan(playerid) {
                 TimestampToDate(ban, bandate[0],bandate[1],bandate[2], bantime[0],bantime[1],bantime[2], -3);
                 TimestampToDate(desban, desbandate[0],desbandate[1],desbandate[2], desbantime[0],desbantime[1],desbantime[2], -3);
 
-                format(dialogBan, sizeof(dialogBan), "VocÍ est· banido do servidor!\n\nRespons·vel pelo ban: %s\nData do banimento: %d/%d/%d - %d:%d:%d\nData do desbanimento: %d/%d/%d - %d:%d:%d\nMotivo: %s", admin, bandate[2], bandate[1], bandate[0], bantime[0], bantime[1], bantime[2], desbandate[2], desbandate[1], desbandate[0], desbantime[0], desbantime[1], desbantime[2], motivo);
+                format(dialogBan, sizeof(dialogBan), "Voc√™ est√° banido do servidor!\n\nRespons√°vel pelo ban: %s\nData do banimento: %d/%d/%d - %d:%d:%d\nData do desbanimento: %d/%d/%d - %d:%d:%d\nMotivo: %s", admin, bandate[2], bandate[1], bandate[0], bantime[0], bantime[1], bantime[2], desbandate[2], desbandate[1], desbandate[0], desbantime[0], desbantime[1], desbantime[2], motivo);
                 Dialog_Show(playerid, DIALOG_STYLE_MSGBOX, "Ban", dialogBan, "Fechar", "");
                 
                 Kick(playerid);
@@ -66,13 +66,13 @@ YCMD:ban(playerid, params[], help) {
         return SendSyntaxMsg(playerid, "/Ban [id] [tempo] [motivo]");
 
 	if (!IsPlayerConnected(userid))
-		return SendErrorMsg(playerid, "Jogador(a) n„o conectado(a)");
+		return SendErrorMsg(playerid, "Jogador(a) n√£o conectado(a)");
 
     //if (GetPlayerAdminLevel(userid) > GetPlayerAdminLevel(playerid))
-		//return SendErrorMsg(playerid, "VocÍ n„o pode fazer nada contra um admin superior a vocÍ.");
+		//return SendErrorMsg(playerid, "Voc√™ n√£o pode fazer nada contra um admin superior a voc√™.");
 
 	//if (GetPlayerAdminLevel(userid) == GetPlayerAdminLevel(playerid))
-		//return SendErrorMsg(playerid, "VocÍ n„o pode fazer nada contra um admin do mesmo nÌvel.");
+		//return SendErrorMsg(playerid, "Voc√™ n√£o pode fazer nada contra um admin do mesmo n√≠vel.");
 
 	// Preparar variaveis
     new playerip[16], serial[64], bantime, unbantime;
@@ -107,10 +107,10 @@ YCMD:ban(playerid, params[], help) {
 	}
 
 	// Avisar
-	SendMsg(userid, X11_RED, "~> VocÍ foi banido(a) pelo motivo '%s'", motivo);
-	SendMsg(userid, X11_RED, "~> Se vocÍ acha que foi banido injustamente, tire um print (F8) deste ban");
+	SendMsg(userid, X11_RED, "~> Voc√™ foi banido(a) pelo motivo '%s'", motivo);
+	SendMsg(userid, X11_RED, "~> Se voc√™ acha que foi banido injustamente, tire um print (F8) deste ban");
 	SendMsg(userid, X11_RED, "~> Entre em nosso Discord e solicite seu desban no canal \"banimentos\"");
-	SendMsg(userid, X11_RED, "~> Aguarde nossa administraÁ„o analisar o caso.");
+	SendMsg(userid, X11_RED, "~> Aguarde nossa administra√ß√£o analisar o caso.");
 
 	// Kickar
     Kick(userid);
@@ -129,7 +129,7 @@ YCMD:desban(playerid, params[], help) {
 		cache_get_row_count(rows);
 
 		if (!rows)
-			return SendErrorMsg(playerid, "Jogador banido n„o encontrado.");
+			return SendErrorMsg(playerid, "Jogador banido n√£o encontrado.");
 	
 		cache_get_value_name_int(0, "BanID", banId);
 
@@ -149,10 +149,10 @@ YCMD:banip(playerid, params[], help) {
 		return SendSyntaxMsg(playerid, "/IPBan [id] [motivo]");
 	
 	if (!IsPlayerConnected(userid))
-	    return SendErrorMsg(playerid, "Jogador(a) n„o conectado(a).");
+	    return SendErrorMsg(playerid, "Jogador(a) n√£o conectado(a).");
 
 	if(!(1 <= strlen(motivo) <= 30))
-		return SendErrorMsg(playerid, "Motivo inv·lido.");
+		return SendErrorMsg(playerid, "Motivo inv√°lido.");
 
 	// Mensagem
 	SendMsgAll(X11_RED, "LSA-ADMIN: %a baniu %p", playerid, userid);
@@ -160,10 +160,10 @@ YCMD:banip(playerid, params[], help) {
 	ServerLog("ipban", "%p baniu o IP do(a) jogador(a) %p", playerid, userid);
 	
 	// Avisar
-	SendMsg(userid, X11_RED, "~> VocÍ foi banido(a) pelo motivo '%s'", motivo);
-	SendMsg(userid, X11_RED, "~> Se vocÍ acha que foi banido injustamente, tire um print (F8) deste ban");
+	SendMsg(userid, X11_RED, "~> Voc√™ foi banido(a) pelo motivo '%s'", motivo);
+	SendMsg(userid, X11_RED, "~> Se voc√™ acha que foi banido injustamente, tire um print (F8) deste ban");
 	SendMsg(userid, X11_RED, "~> Entre em nosso Discord e solicite seu desban no canal \"banimentos\"");
-	SendMsg(userid, X11_RED, "~> Aguarde nossa administraÁ„o analisar o caso.");
+	SendMsg(userid, X11_RED, "~> Aguarde nossa administra√ß√£o analisar o caso.");
 	
 	// Banir
 	BanPlayerEx(userid, motivo);
@@ -176,7 +176,7 @@ YCMD:desbanip(playerid, params[], help) {
 	if (sscanf(params, "s[17]", pIP))
 		return SendSyntaxMsg(playerid, "/DesbanIP [ip]");
 	
-	SendAdminAction(playerid, "VocÍ desbaniu o IP %s", pIP);
+	SendAdminAction(playerid, "Voc√™ desbaniu o IP %s", pIP);
 
 	new cmdRcon[50];
 	format(cmdRcon, sizeof(cmdRcon), "unbanip %s", pIP);
