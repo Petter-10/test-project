@@ -16,7 +16,7 @@ hook OnPlayerConnect(playerid) {
 stock SetPlayerJob(playerid, bool:status) {
     gJobStarted[playerid] = status;
 
-    // Pegar o id do veículo
+    // Pegar o id do veÃ­culo
     switch (status) {
         case true: {
             new vehicleid = GetPlayerVehicleID(playerid);
@@ -24,7 +24,7 @@ stock SetPlayerJob(playerid, bool:status) {
             if (vehicleid != INVALID_VEHICLE_ID) {
                 gJobVehicle[playerid] = vehicleid;
 
-                // Pegar o trailer do veículo
+                // Pegar o trailer do veÃ­culo
                 if (GetVehicleTrailer(vehicleid) != INVALID_VEHICLE_ID) {
                     new trailerid = GetVehicleTrailer(vehicleid);
 
