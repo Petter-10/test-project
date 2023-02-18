@@ -9,15 +9,15 @@ static g_PlayerDiscordID[MAX_PLAYERS][32];
 static g_SecurityKey[MAX_PLAYERS];
 
 public OnPlayerConnect(playerid) {
-    // Verificar se é NPC
+    // Verificar se Ã© NPC
     if (IsPlayerNPC(playerid)) {
-        // Carregar as informações de NPC
+        // Carregar as informaÃ§Ãµes de NPC
         CallLocalFunction("OnCustomNPCConnect", "d", playerid);
 
 		//return Y_HOOKS_BREAK_RETURN_0();
     }
     else {
-        // Carregar as informações de player
+        // Carregar as informaÃ§Ãµes de player
         CallLocalFunction("SetupLoginScreen", "d", playerid);
     }
 
@@ -87,31 +87,31 @@ ChangeNickname(playerid) {
 		if (!response) return 1;
 
 		if (!(3 <= strlen(inputtext) <= 20)) {
-			SendErrorMsg(playerid, "Nickname inválido. use de 3 a 20 carácteres");
+			SendErrorMsg(playerid, "Nickname invÃ¡lido. use de 3 a 20 carÃ¡cteres");
 			return ChangeNickname(playerid);
 		}
 
 		if (strfind(inputtext, "Frankie", true) != -1)
-			return SendErrorMsg(playerid, "Este nick é de uso exclusivo no servidor.");
+			return SendErrorMsg(playerid, "Este nick Ã© de uso exclusivo no servidor.");
 
 		// Verificar nicks proibidos
         if (CheckStringNickname(inputtext))
-            return SendErrorMsg(playerid, "Este nick é proibido no servidor.");
+            return SendErrorMsg(playerid, "Este nick Ã© proibido no servidor.");
 
-		// Verificar se já está em uso
+		// Verificar se jÃ¡ estÃ¡ em uso
 		inline const OnPlayerCheckUsername() {
 			new rows;
 
 			cache_get_row_count(rows);
 
             if(rows) {
-                SendErrorMsg(playerid, "Nickname já está em uso");
+                SendErrorMsg(playerid, "Nickname jÃ¡ estÃ¡ em uso");
                 
 				ChangeNickname(playerid);
             }
             else {
                 SendMsg(playerid, Y_LIMEGREEN, "Nickname alterado para \"%s\"", inputtext);
-                SendMsg(playerid, Y_LIMEGREEN, "Não se esqueça de seu nick novo.");
+                SendMsg(playerid, Y_LIMEGREEN, "NÃ£o se esqueÃ§a de seu nick novo.");
 
                 SendMsgAll(X11_YELLOW, "NICKNAME: %a mudou seu nick para %s", playerid, inputtext);
 
@@ -149,7 +149,7 @@ ChangeNickname(playerid) {
 		MySQL_TQueryInline(MySQL_Database(), using inline OnPlayerCheckUsername, "SELECT * FROM `playerdata` WHERE `username` = '%e'", inputtext);
 	}
 
-	Dialog_ShowCallback(playerid, using inline _response, DIALOG_STYLE_INPUT, ""SPRING_GREEN"Mudança de Nick", "{FFFFFF}Insira o nick que você deseja ter para sua conta.\n\n"ORANGERED"OBS: {FFFFFF}Não utilize ESPAÇOS em seu novo nick", "Mudar", "Fechar");
+	Dialog_ShowCallback(playerid, using inline _response, DIALOG_STYLE_INPUT, ""SPRING_GREEN"MudanÃ§a de Nick", "{FFFFFF}Insira o nick que vocÃª deseja ter para sua conta.\n\n"ORANGERED"OBS: {FFFFFF}NÃ£o utilize ESPAÃ‡OS em seu novo nick", "Mudar", "Fechar");
 	return 1;
 }
 
@@ -169,22 +169,22 @@ RequestSecurityKey(playerid) {
 				g_SecurityKey[playerid] = gerarPIN();
 			
 				new infoEmail[128];
-				format(infoEmail, sizeof(infoEmail), "Olá %p você solicitou uma alteração de senha. Aqui está o código: %d", playerid, g_SecurityKey[playerid]);
+				format(infoEmail, sizeof(infoEmail), "OlÃ¡ %p vocÃª solicitou uma alteraÃ§Ã£o de senha. Aqui estÃ¡ o cÃ³digo: %d", playerid, g_SecurityKey[playerid]);
 				
 				// Enviar email
-				SendMail(g_PlayerMail[playerid], "contato.lsarpg@gmail.com", "Life in San Andreas", "Mudança de Senha", infoEmail);
+				SendMail(g_PlayerMail[playerid], "contato.lsarpg@gmail.com", "Life in San Andreas", "MudanÃ§a de Senha", infoEmail);
 			
 				ConfirmEmailCode(playerid);
 			}
 			else {
-				SendErrorMsg(playerid, "Email inválido.");
+				SendErrorMsg(playerid, "Email invÃ¡lido.");
 
 				RequestSecurityKey(playerid);
 			}
 		}
 	}
 
-	Dialog_ShowCallback(playerid, using inline _response, DIALOG_STYLE_INPUT, ""SPRING_GREEN"Mudança de Senha", "{FFFFFF}Digite seu email cadastrado abaixo.", "Próxima", "Fechar");
+	Dialog_ShowCallback(playerid, using inline _response, DIALOG_STYLE_INPUT, ""SPRING_GREEN"MudanÃ§a de Senha", "{FFFFFF}Digite seu email cadastrado abaixo.", "PrÃ³xima", "Fechar");
 	return 1;
 }
 
@@ -197,14 +197,14 @@ static ConfirmEmailCode(playerid) {
 				ChangePassword(playerid);
 			}
 			else {
-				SendErrorMsg(playerid, "Código incorreto.");
+				SendErrorMsg(playerid, "CÃ³digo incorreto.");
 
 				ConfirmEmailCode(playerid);
 			}
 		}
 	}
 
-	Dialog_ShowCallback(playerid, using inline _response, DIALOG_STYLE_INPUT, ""SPRING_GREEN"Mudança de Senha", "{FFFFFF}Digite o código que você recebeu em seu email:\n\n"ORANGERED"OBS: {FFFFFF}Verifique a Caixa de 'Spam'", "Próxima", "Fechar");
+	Dialog_ShowCallback(playerid, using inline _response, DIALOG_STYLE_INPUT, ""SPRING_GREEN"MudanÃ§a de Senha", "{FFFFFF}Digite o cÃ³digo que vocÃª recebeu em seu email:\n\n"ORANGERED"OBS: {FFFFFF}Verifique a Caixa de 'Spam'", "PrÃ³xima", "Fechar");
 	return 1;	
 }
 
@@ -214,7 +214,7 @@ ChangePassword(playerid) {
 
 		if (response) {
 			inline const PasswordHash(string:senha[]) {
-				SendClientMessage(playerid, Y_LIMEGREEN, "Você mudou sua senha");
+				SendClientMessage(playerid, Y_LIMEGREEN, "VocÃª mudou sua senha");
 
 				Log_Write(playerid, "[%s] %p mudou sua senha", FormatFullTime(), playerid);
 
@@ -226,12 +226,12 @@ ChangePassword(playerid) {
 		}
 	}
 
-	Dialog_ShowCallback(playerid, using inline _response, DIALOG_STYLE_PASSWORD, ""SPRING_GREEN"Mudança de Senha", "{FFFFFF}Insira a nova senha que você deseja ter para sua conta.", "Mudar", "Fechar");
+	Dialog_ShowCallback(playerid, using inline _response, DIALOG_STYLE_PASSWORD, ""SPRING_GREEN"MudanÃ§a de Senha", "{FFFFFF}Insira a nova senha que vocÃª deseja ter para sua conta.", "Mudar", "Fechar");
 	return 1;
 }
 */
 
-// Funções
+// FunÃ§Ãµes
 stock SetPlayerAccountID(playerid, uid) {
 	return g_PlayerUID[playerid] = uid;
 }
